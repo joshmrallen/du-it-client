@@ -1,18 +1,34 @@
 .App {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+  height: 1000px;
+}
+
+.shelf {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  background: url("./images/supermarket-shelves.jpg") no-repeat left;
+  background-size: 100% 100%;
+  margin: 2vh 2vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
+
+
+
+/* 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,17 +38,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
