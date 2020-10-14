@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Word = (props) => {
+const Word = ({word}) => {
     
-
+    
 
     return(
         <>

@@ -1,17 +1,17 @@
 import React from 'react'
 import Book from '../Components/Book'
 
-const BookCollection = ({books}) => {
+const BookCollection = ({books, openBook}) => {
 
     const collection = () => {
         if(books){
-            return books.map(book => <Book props={book} />)
+            return books.map((book, index) => <Book key={index} book={book} openBook={openBook} />)
         } else {
             return "Your shelf is empty"
         }
     }
 
-    // const book = new Book("/Users/Josh/Flatiron/mod-5/project_planning/笑傲江湖.epub", {})
+    
 
     return(
         <div className="shelf">

@@ -8,12 +8,27 @@
 
 .shelf {
   display: flex;
+  align-content: space-between;
   height: 100%;
   width: 50%;
-  background: url("./images/supermarket-shelves.jpg") no-repeat left;
   background-size: 100% 100%;
   margin: 2vh 2vh;
   text-align: center;
+}
+
+.book-face {
+  background-image: url("./images/BookLarge01.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30vh;
+  width: 20vh;
+  margin: 5px;
+  color: antiquewhite;
+}
+
+.reader {
+  height: 90%;
+  width: 100%;
 }
 
 .list {
@@ -24,6 +39,9 @@
   text-align: center;
 }
 
+.navbar {
+  
+}
 
 
 
