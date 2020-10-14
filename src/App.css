@@ -6,6 +6,12 @@
   height: 1000px;
 }
 
+#collection-container {
+  height: 100%;
+  text-align: center;
+  border: 1px black solid;
+}
+
 .shelf {
   display: flex;
   align-content: space-between;
@@ -39,9 +45,13 @@
   text-align: center;
 }
 
-.navbar {
-  
+.list-word {
+  border: 1px black solid;
 }
+
+/* .navbar {
+  
+} */
 
 
 

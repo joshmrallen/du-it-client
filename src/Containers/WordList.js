@@ -5,7 +5,7 @@ const WordList = ({words}) => {
 
     const list = () => {
         if(words){
-            return words.map(word => <Word props={word} />)
+            return words.map((word, index) => <Word key={index} word={word} />)
         } else {
             return "没词！快开一本书阅读一下!"
         }
@@ -13,6 +13,7 @@ const WordList = ({words}) => {
 
     return(
         <div className="list">
+            <h1>Word List</h1>
             {list()}
         </div>
     )

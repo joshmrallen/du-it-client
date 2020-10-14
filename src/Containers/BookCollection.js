@@ -14,9 +14,12 @@ const BookCollection = ({books, openBook}) => {
     
 
     return(
-        <div className="shelf">
-            {collection()}
-        </div>
+        <div id="collection-container">
+            <h1>Your Collection</h1>
+            <div className="shelf">
+                {collection()}
+            </div>
+        </div>    
     )
 }
 

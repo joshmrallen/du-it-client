@@ -23,7 +23,8 @@ class App extends React.Component {
     bookCollection: null,
     words: null,
     currentBook: null,
-    cardSide: "front"
+    cardSide: "front",
+    newWord: null
   }
 
   componentDidMount(){
@@ -32,11 +33,13 @@ class App extends React.Component {
       .then(userInfo => {
         this.setState(()=>({
           user: {
+            id: userInfo.id,
             first_name: userInfo.first_name,
             last_name: userInfo.last_name,
             email: userInfo.email
           },
-          bookCollection: userInfo.books
+          bookCollection: userInfo.books,
+          words: userInfo.words
         }))
       })
   }
@@ -65,6 +68,25 @@ class App extends React.Component {
       }))
     }
   }
+
+  newWordHandler = () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        accepts: 'application/json'
+      },
+      body: JSON.stringify({
+        id: this.state.user.id,
+        word: this.state.newWord
+      })
+    }
+    fetch(`${API_URL}/add_word`, options)
+      .then(response => response.json())
+      .then(console.log)
+  }
+
+  //deleteWordHandler - for deleting words from user word list
 
   render(){
 
