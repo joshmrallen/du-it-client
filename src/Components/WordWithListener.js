@@ -1,16 +1,24 @@
 import React from 'react'
 
-const WordWithListener = ({word, listDefineHandler}) => {
+const WordWithListener = ({word, listDefineHandler, appRemoveHandler}) => {
 
     const clickHandler = () => {
         console.log("Word has been clicked!")
         listDefineHandler(word)
+    }//consider adding toggle for closing the definition modal
+
+    const removeHandler = () => {
+        console.log(word.word, ": removeHandler in WordWithListener")
+        appRemoveHandler(word)
     }
 
     return(
-        <div className="list-word" onClick={clickHandler}>
-            <p>{word.word}</p>
-        </div>
+        <>
+            <div className="list-word" onClick={clickHandler}>
+                <p>{word.word}</p>
+            </div>
+            <button className="remove-word" onClick={removeHandler}>Remove from list</button>
+        </>
     )
 }
 

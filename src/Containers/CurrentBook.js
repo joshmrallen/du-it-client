@@ -1,6 +1,7 @@
 import React from 'react'
 import {ReactReader} from 'react-reader'
 import {withRouter} from 'react-router-dom'
+import Definition from '../Components/Definition';
 
 class CurrentBook extends React.Component{
 
@@ -13,7 +14,11 @@ class CurrentBook extends React.Component{
         // console.log("idoc: ", idoc)
         const word = idoc.getSelection().toString()
         // console.log("Selected word: ", word)
-        this.props.selectHandler(word)
+        if(word !== ""){
+            this.props.selectHandler(word)
+        } else {
+            console.log("Nothing was selected")
+        }
 
         // this.props.selectHandler(word)
     }
@@ -39,16 +44,24 @@ class CurrentBook extends React.Component{
 
     clickHandler = () => {
         console.log("Looking up:", this.props.selectedWord)
-        this.props.lookUpHandler()
+        if(this.props.selectedWord !== ""){
+            this.props.lookUpHandler()
+        }//you can remove the conditional once you delete the blank space word currently in the words array of the test user
+    }
+
+    lookUpModal = () => {
+        return <Definition word={this.props.lookUp} resetDefTerm={this.props.resetDefTerm} />
     }
 
     render(){
 
         console.log(this.props.selectedWord)
-        console.log(this.props.location)
+        console.log(this.props.lookUp)
+        // console.log(this.props.location) this is actually a withRouter property which is overriding the props from App I was sending
 
         return(
             <div className="reader" onMouseUp={this.selectHandler} >
+                {this.lookUpModal()}
                 <button id="look-up" onClick={this.clickHandler}>Look Up Selection</button>
                 {this.props.book ? <>
                     {/* {console.log(this.props.book)} */}

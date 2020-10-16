@@ -29,7 +29,6 @@ class App extends React.Component {
     rendition: {},
     lastBookLocation: "epubcfi(/6/2[cover]!/6)",
     defineWord: "",
-    lookUp: ""
   }
 
   componentDidMount(){
@@ -136,8 +135,8 @@ class App extends React.Component {
     
     if(found){
       this.setState(()=>({
-        lookUp: found
-      }), ()=>{console.log(this.state.lookUp)})
+        defineWord: found
+      }), ()=>{console.log(this.state.defineWord)})
     } else {
       const options = {
         method: 'POST',
@@ -158,7 +157,7 @@ class App extends React.Component {
           const index = userInfoResponse.words.length - 1
           this.setState(()=>({
             words: userInfoResponse.words,
-            lookUp: userInfoResponse.words[index]
+            defineWord: userInfoResponse.words[index]
           }))
         })
     }
@@ -174,6 +173,31 @@ class App extends React.Component {
     this.setState(()=>({
       defineWord: ""
     }))
+  }
+
+  appRemoveHandler = (word) => {
+    console.log("Removing: ", word.word)
+    
+    const newArray = this.state.words.filter(el => el.id !== word.id)
+    
+    this.setState(()=>({
+      words: newArray
+    }))
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        accepts: 'application/json'
+      },
+      body: JSON.stringify({
+        word_id: word.id,
+        user_id: this.state.user.id
+      })
+    }
+    fetch(`${API_URL}/remove_word`, options)
+      .then(response => response.json())
+      .then(console.log)
   }
 
   render(){
@@ -201,7 +225,8 @@ class App extends React.Component {
                         location={this.state.lastBookLocation} 
                         locationChanged={this.locationChanged} 
                         lookUpHandler={this.lookUpHandler}
-                        lookUp={this.state.lookUp}
+                        lookUp={this.state.defineWord}
+                        resetDefTerm={this.resetDefTerm}
                       />
                     </>
                   )
@@ -210,7 +235,7 @@ class App extends React.Component {
                 <Route path="/list" render={()=>{
                   return(
                     <>
-                      <WordList words={this.state.words} listDefineHandler={this.defineHandler} />
+                      <WordList words={this.state.words} listDefineHandler={this.defineHandler} appRemoveHandler={this.appRemoveHandler} />
                       <Definition word={this.state.defineWord} resetDefTerm={this.resetDefTerm} />
                     </>
                   )
@@ -228,7 +253,7 @@ class App extends React.Component {
                   return(
                     <>
                       <BookCollection books={this.state.bookCollection} openBook={this.openHandler} />
-                      <WordList words={this.state.words} />
+                      <WordList words={this.state.words} appRemoveHandler={this.appRemoveHandler} />
                     </>
                   )
                 }} />

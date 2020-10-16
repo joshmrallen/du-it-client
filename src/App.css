@@ -32,6 +32,7 @@
   margin: 5px;
   color: antiquewhite;
   padding: 5px;
+  cursor: pointer;
 }
 
 /* #author {
@@ -51,6 +52,7 @@
   border-radius: 5px;
   z-index: 2;
   margin: 3vh;
+  cursor: pointer;
 }
 
 .list {
@@ -60,18 +62,23 @@
   width: 50%;
   text-align: center;
   margin: 5vw;
+  overflow-y: scroll;
 }
 
 .list-word {
   border: 1px black solid;
+  cursor: pointer;
 }
 
 .definition {
-  position: relative;
+  position: absolute;
+  right: 0px;
   border: 1px black solid;
   top: 2%;
   width: 30vw;
   margin: 5vw;
+  z-index: 100;
+  background: lemonchiffon;
 }
 
 .definition .close-def {
@@ -101,7 +108,20 @@
   background: #1565C0;
 }
 
+.navbar .navlink:active{
+  background: #1565C0;
+  font-weight: bold;
+}
 
+.remove-word{
+  display: block;
+  position: relative;
+}
+
+.remove-word:hover{
+  visibility: visible;
+  cursor: pointer;
+}/* how do I make so when I hover over the word tile, the remove button will be revealed? */
 
 
 /* 

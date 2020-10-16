@@ -3,11 +3,11 @@ import Word from '../Components/Word'
 import WordWithListener from '../Components/WordWithListener'
 import {withRouter} from 'react-router-dom'
 
-const WordList = ({words, history, listDefineHandler}) => {
+const WordList = ({words, history, listDefineHandler, appRemoveHandler}) => {
 
     const list = () => {
         if(words){
-            return words.map((word, index) => <Word key={index} word={word} />)
+            return words.map((word, index) => <Word key={index} word={word} appRemoveHandler={appRemoveHandler} />)
         } else {
             return "没词！快开一本书阅读一下!"
         }
@@ -15,7 +15,7 @@ const WordList = ({words, history, listDefineHandler}) => {
 
     const listWithListeners = () => {
         if(words){
-            return words.map((word, index) => <WordWithListener key={index} word={word} listDefineHandler={listDefineHandler} />)
+            return words.map((word, index) => <WordWithListener key={index} word={word} listDefineHandler={listDefineHandler} appRemoveHandler={appRemoveHandler} />)
         } else {
             return "没词！快开一本书阅读一下!"
         }
