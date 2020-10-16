@@ -28,7 +28,8 @@ class App extends React.Component {
     newWord: "",
     rendition: {},
     lastBookLocation: "epubcfi(/6/2[cover]!/6)",
-    defineWord: ""
+    defineWord: "",
+    lookUp: ""
   }
 
   componentDidMount(){
@@ -131,20 +132,36 @@ class App extends React.Component {
 
   lookUpHandler = () => {
     console.log(this.state.newWord, " is now in lookUpHandler.")
-    const options = {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        accepts: 'application/json'
-      },
-      body: JSON.stringify({
-        id: this.state.user.id,
-        word: this.state.newWord
-      })
+    const found = this.state.words.find(word => word.word === this.state.newWord)
+    
+    if(found){
+      this.setState(()=>({
+        lookUp: found
+      }), ()=>{console.log(this.state.lookUp)})
+    } else {
+      const options = {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          accepts: 'application/json'
+        },
+        body: JSON.stringify({
+          id: this.state.user.id,
+          word: this.state.newWord
+        })
+      }
+
+      fetch(`${API_URL}/add_word`, options)
+        .then(response => response.json())
+        .then(userInfoResponse => {
+          //if word is not already in list, send request and setState of words and lookUp
+          const index = userInfoResponse.words.length - 1
+          this.setState(()=>({
+            words: userInfoResponse.words,
+            lookUp: userInfoResponse.words[index]
+          }))
+        })
     }
-    fetch(`${API_URL}/add_word`, options)
-      .then(response => response.json())
-      .then(console.log)
   }
 
   defineHandler = (term) => {
@@ -184,6 +201,7 @@ class App extends React.Component {
                         location={this.state.lastBookLocation} 
                         locationChanged={this.locationChanged} 
                         lookUpHandler={this.lookUpHandler}
+                        lookUp={this.state.lookUp}
                       />
                     </>
                   )
