@@ -1,9 +1,9 @@
-.App {
+.main {
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: space-around;
-  height: 1000px;
+  height: 100vh;
 }
 
 #collection-container {
@@ -15,6 +15,7 @@
 .shelf {
   display: flex;
   align-content: space-between;
+  align-items: stretch;
   height: 100%;
   width: 50%;
   background-size: 100% 100%;
@@ -30,11 +31,26 @@
   width: 20vh;
   margin: 5px;
   color: antiquewhite;
+  padding: 5px;
 }
 
+/* #author {
+  text-size-adjust: 50%;
+} */
+
 .reader {
-  height: 90%;
+  position: absolute;
+  height: 100%;
   width: 100%;
+}
+
+#look-up {
+  position: absolute;
+  right: 0px;
+  border: 1px black solid;
+  border-radius: 5px;
+  z-index: 2;
+  margin: 3vh;
 }
 
 .list {
@@ -43,15 +59,47 @@
   height: 100%;
   width: 50%;
   text-align: center;
+  margin: 5vw;
 }
 
 .list-word {
   border: 1px black solid;
 }
 
-/* .navbar {
-  
-} */
+.definition {
+  position: relative;
+  border: 1px black solid;
+  top: 2%;
+  width: 30vw;
+  margin: 5vw;
+}
+
+.definition .close-def {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.navbar {
+  /* visibility: hidden; */
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+  list-style: none;
+  margin: 0;
+  background: deepskyblue;
+}
+
+.navbar .navlink{
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navbar .navlink:hover{
+  background: #1565C0;
+}
 
 
 

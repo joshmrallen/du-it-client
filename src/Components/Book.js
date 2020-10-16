@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Book = ({book, openBook}) => {
+const Book = ({index, book, openBook}) => {
 
     const clickHandler = () => {
-        openBook(book)
+        openBook(book, index)
     }
 
     return(
         <div className="book-face" onClick={clickHandler}>
             <h4>{book.title}</h4>
-            <p>{book.author.last_name}{book.author.first_name}</p>
+            <p id="author">{book.author.last_name}{book.author.first_name}</p>
         </div>
     )
 }

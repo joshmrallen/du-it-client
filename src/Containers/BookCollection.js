@@ -5,7 +5,7 @@ const BookCollection = ({books, openBook}) => {
 
     const collection = () => {
         if(books){
-            return books.map((book, index) => <Book key={index} book={book} openBook={openBook} />)
+            return books.map((book, index) => <Book key={index} index={index} book={book} openBook={openBook} />)
         } else {
             return "Your shelf is empty"
         }

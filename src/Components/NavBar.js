@@ -6,14 +6,19 @@ const NavBar = ({user}) => {
 
 
     return(
-        <div className="navbar">
+        <div>
             {user ? <> 
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/list">My Word List</NavLink>
-                <NavLink to="/book">Current Book</NavLink>
+                <ul className="navbar">
+                    <li><NavLink to="/" className="navlink">Home</NavLink></li>
+                    <li><NavLink to="/list" className="navlink">My Word List</NavLink></li>
+                    <li><NavLink to="/book" className="navlink">Current Book</NavLink></li>
+                    <li><NavLink to="/" className="navlink">Flashcards</NavLink></li>
+                </ul>
              </> : 
              <>
-                {/* <NavLink>Login / Register</NavLink> */}
+                <ul className="navbar">
+                    <li><NavLink to="/" className="navlink">Login / Register</NavLink></li>
+                </ul>
              </>
             }
         </div>
