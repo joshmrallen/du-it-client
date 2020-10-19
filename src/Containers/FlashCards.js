@@ -1,27 +1,29 @@
 import React from 'react'
-import Card from '../Components/Card'
+import Deck from '../Components/Deck'
+import ActiveCard from '../Components/ActiveCard'
 
-const FlashCards = ({cardSide, words, flipToggle}) => {
+const FlashCards = ({cardFront, flashCardWord, flipToggle, wordChooser}) => {
 
-    const cards = () => {
-        if(words){
-            return words.map(word => <Card word={word} flipToggle={flipToggle} /> )
-        } else {
-            return "没词！快开一本书阅读一下!"
-        }
-    }
-
-    const currentCard = () => {
-        console.log(cardSide)
-    }
+    
 
     return(
-        <div className="flashcards">
-            {cards()}
-            {currentCard()}
-        </div>
+        <>
+            <Deck wordChooser={wordChooser} />
+            <ActiveCard 
+                cardFront={cardFront} 
+                flashCardWord={flashCardWord} 
+                flipToggle={flipToggle} 
+            />
+        </>
     )
 
 }
 
 export default FlashCards
+
+/*
+Create a new component called Card
+1. gets an onClick that will "toggle" between 'front' and 'back'
+2. if 'front', then the Card renders the character only
+3. if 'back', then the Card renders the character, the pinyin, and the definition
+*/

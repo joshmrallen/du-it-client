@@ -4,6 +4,7 @@
   align-items: center;
   align-content: space-around;
   height: 100vh;
+  background-color: #cae4b6;
 }
 
 #collection-container {
@@ -24,15 +25,30 @@
 }
 
 .book-face {
-  background-image: url("./images/BookLarge01.png");
+  position: relative;
+  /* relative position needed here in order to use absolute positioning of the cover div (contains title and author) */
+  background-image: url("./images/book-clip-art.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 30vh;
-  width: 20vh;
+  height: 150px;
+  width: 200px;
   margin: 5px;
-  color: antiquewhite;
+  color: black;
   padding: 5px;
   cursor: pointer;
+}
+
+.book-cover {
+  position: absolute;
+  margin: 0px 0px;
+  top: 10%;
+  left: 30%;
+
+
+}
+
+.book-cover > p {
+  margin: 5px 0px;
 }
 
 /* #author {
@@ -85,6 +101,7 @@
   position: absolute;
   top: 2%;
   right: 2%;
+  cursor: pointer;
 }
 
 .navbar {
@@ -123,6 +140,102 @@
   cursor: pointer;
 }/* how do I make so when I hover over the word tile, the remove button will be revealed? */
 
+.flashcards {
+  display: contents;
+  position: static;
+  height: 100%;
+  width: 100%;
+  background: cornsilk;
+  z-index: -5;
+}
+
+.deck{
+  position: relative;
+  background-color: rgb(250, 246, 233);
+  /* padding: 30px; */
+  top: 2vh;
+  left: 2vw;
+  height: 150px;
+  width: 300px;
+  /* border: 1px black solid; */
+  cursor: pointer;
+  /* box-shadow: 20px 20px 10px grey; */
+  /* z-index: 2; */
+}
+
+.deck p {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+}
+
+/* stack affect */
+.deck, .deck::before, .deck::after {
+  /* Adding shadow to distinguish cards from one another */
+  box-shadow: 2px 1px 1px rgba(0,0,0,0.15);
+}
+
+.deck::before, .deck::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* Second card */
+.deck::before {
+  left: 7px;
+  top: 5px;
+  z-index: -1;
+}
+
+/* Third card */
+.deck::after {
+  left: 12px;
+  top: 10px;
+  z-index: -2;
+}
+
+.card{
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  height: 150px;
+  width: 300px;
+  border: 1px black solid;
+  cursor: pointer;
+  box-shadow: 20px 20px 10px grey;
+}
+
+.card > div {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.card > div > h1 {
+  margin: 5px 0px;
+}
+
+.card > h1 {
+  position: absolute;
+  font-size: 18px;
+  left: 5px;
+}
+
+#character {
+  /* display: contents; */
+  position: absolute;
+  /* z-index: 1; */
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  margin: 20px 5px;
+}
 
 /* 
 .App-header {

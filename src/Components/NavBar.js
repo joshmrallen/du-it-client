@@ -12,7 +12,7 @@ const NavBar = ({user}) => {
                     <li><NavLink to="/" className="navlink">Home</NavLink></li>
                     <li><NavLink to="/list" className="navlink">My Word List</NavLink></li>
                     <li><NavLink to="/book" className="navlink">Current Book</NavLink></li>
-                    <li><NavLink to="/" className="navlink">Flashcards</NavLink></li>
+                    <li><NavLink to="/flashcards" className="navlink">Flashcards</NavLink></li>
                 </ul>
              </> : 
              <>

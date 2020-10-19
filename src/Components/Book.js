@@ -8,8 +8,10 @@ const Book = ({index, book, openBook}) => {
 
     return(
         <div className="book-face" onClick={clickHandler}>
-            <h4>{book.title}</h4>
-            <p id="author">{book.author.last_name}{book.author.first_name}</p>
+            <div className="book-cover">
+                <h4>{book.title}</h4>
+                <p>{book.author.last_name}{book.author.first_name}</p>
+            </div>
         </div>
     )
 }

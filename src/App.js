@@ -24,11 +24,12 @@ class App extends React.Component {
     bookCollection: [],
     words: [],
     currentBook: {},
-    cardSide: "front",
+    cardFront: true,
     newWord: "",
     rendition: {},
     lastBookLocation: "epubcfi(/6/2[cover]!/6)",
     defineWord: "",
+    flashCardWord: {}
   }
 
   componentDidMount(){
@@ -66,15 +67,9 @@ class App extends React.Component {
 
   //flipToggle - save flipToggle in state as "front" or "back"
   flipToggle = () => {
-    if(this.state.cardSide === "front"){
-      this.setState(()=>({
-        cardSide: "back"
-      }))
-    } else if(this.state.cardSide === "back"){
-      this.setState(()=>({
-        cardSide: "front"
-      }))
-    }
+    this.setState((prevState)=>({
+      cardFront: !prevState.cardFront
+    }))
   }
 
   newWordHandler = () => {
@@ -200,6 +195,19 @@ class App extends React.Component {
       .then(console.log)
   }
 
+  wordChooser = () => {
+    console.log("Choosing word at random")
+    //takes this.state.words, choose a word at random
+    const array = this.state.words
+    const word = array[Math.floor(Math.random()*array.length)]
+    console.log("Random word: ", word)
+    //setState of flashCardWord to the word chosen
+    this.setState(()=>({
+      cardFront: true,
+      flashCardWord: word
+    }))
+  }
+
   render(){
 
     // console.log(this.state)
@@ -208,7 +216,7 @@ class App extends React.Component {
       <div className="App">
         <NavBar user={this.state.user} />
 
-        <div className="main">
+        <div>
           {this.state.user === false ? null : 
           
             <>
@@ -243,18 +251,23 @@ class App extends React.Component {
 
                 <Route path="/flashcards" render={()=>{
                   return(
-                    <>
-                      <FlashCards cardSide={this.state.cardSide} flipToggle={this.flipToggle} />
-                    </>
+                    <div className="flashcards">
+                      <FlashCards 
+                        wordChooser={this.wordChooser} 
+                        cardFront={this.state.cardFront} 
+                        flashCardWord={this.state.flashCardWord} 
+                        flipToggle={this.flipToggle} 
+                      />
+                    </div>
                   )
                 }} />
 
                 <Route path="/" render={()=>{
                   return(
-                    <>
+                    <div className="main">
                       <BookCollection books={this.state.bookCollection} openBook={this.openHandler} />
                       <WordList words={this.state.words} appRemoveHandler={this.appRemoveHandler} />
-                    </>
+                    </div>
                   )
                 }} />
               </Switch>
