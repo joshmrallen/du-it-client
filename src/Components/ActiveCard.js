@@ -13,7 +13,7 @@ const ActiveCard = ({cardFront, flashCardWord, flipToggle}) => {
                 </>
                 : 
                 <>
-                    <h1>Back</h1>
+                    {/* <h1>Back</h1> */}
                     <div className="back">
                         <h1>{flashCardWord.word}</h1>
                         <p>{flashCardWord.pinyin}</p>

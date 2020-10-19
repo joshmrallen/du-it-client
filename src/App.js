@@ -199,7 +199,12 @@ class App extends React.Component {
     console.log("Choosing word at random")
     //takes this.state.words, choose a word at random
     const array = this.state.words
-    const word = array[Math.floor(Math.random()*array.length)]
+    let word = array[Math.floor(Math.random()*array.length)]
+    if(word === this.state.flashCardWord){
+      while(word === this.state.flashCardWord){
+        word = array[Math.floor(Math.random()*array.length)]
+      }
+    }
     console.log("Random word: ", word)
     //setState of flashCardWord to the word chosen
     this.setState(()=>({
