@@ -9,10 +9,10 @@ const NavBar = ({user}) => {
         <div>
             {user ? <> 
                 <ul className="navbar">
-                    <li><NavLink to="/" className="navlink">Home</NavLink></li>
-                    <li><NavLink to="/list" className="navlink">My Word List</NavLink></li>
-                    <li><NavLink to="/book" className="navlink">Current Book</NavLink></li>
-                    <li><NavLink to="/flashcards" className="navlink">Flashcards</NavLink></li>
+                    <li><NavLink exact={true} to="/" className="navlink" activeClassName="active-link">Home</NavLink></li>
+                    <li><NavLink to="/list" className="navlink" activeClassName="active-link">My Word List</NavLink></li>
+                    <li><NavLink to="/book" className="navlink" activeClassName="active-link">Current Book</NavLink></li>
+                    <li><NavLink to="/flashcards" className="navlink" activeClassName="active-link">Flashcards</NavLink></li>
                     <li><h1>hidden</h1></li>
                     <li><h1>hidden</h1></li>
                     <li><h1>hidden</h1></li>

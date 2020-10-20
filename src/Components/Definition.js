@@ -6,7 +6,10 @@ const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragSt
     const listStyle = {
         position: 'fixed',
         top: '30%',
-        right: '10%'
+        right: '5%',
+        height: '30vh',
+        width: '40vw',
+        'font-size': '24px',
     }
 
     return(
