@@ -15,9 +15,9 @@ const WordWithListener = ({word, listDefineHandler, appRemoveHandler}) => {
     return(
         <>
             <div className="list-word" onClick={clickHandler}>
-                <p>{word.word}</p>
+                <h1>{word.word}</h1>
+                <button className="remove-word" onClick={removeHandler}>Remove from list</button>
             </div>
-            <button className="remove-word" onClick={removeHandler}>Remove from list</button>
         </>
     )
 }

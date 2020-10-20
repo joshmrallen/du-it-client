@@ -13,13 +13,16 @@ const Word = ({word, history, appRemoveHandler}) => {
     }
 
     return(
-        <div className="list-word">
-            <p>{word.word}</p>
+        <div className="list-word-home" onClick={goToList}>
+            <h1>{word.word}</h1>
             <p>{word.pinyin}</p>
-            <button className="go-list-btn" onClick={goToList}>See on List</button>
-            <button className="remove-word" onClick={removeHandler}>Remove</button>
+            {/* <button className="go-list-btn" onClick={goToList}>See on List</button> */}
+            {/* <button className="remove-word" onClick={removeHandler}>Remove</button> */}
         </div>
     )
 }
 
 export default withRouter(Word)
+
+// make sure to include index in props above
+// style={{'z-index': `${index}`}}

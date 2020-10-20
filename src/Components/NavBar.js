@@ -13,6 +13,10 @@ const NavBar = ({user}) => {
                     <li><NavLink to="/list" className="navlink">My Word List</NavLink></li>
                     <li><NavLink to="/book" className="navlink">Current Book</NavLink></li>
                     <li><NavLink to="/flashcards" className="navlink">Flashcards</NavLink></li>
+                    <li><h1>hidden</h1></li>
+                    <li><h1>hidden</h1></li>
+                    <li><h1>hidden</h1></li>
+                    <li><h2>Dú it 阅读</h2></li>
                 </ul>
              </> : 
              <>

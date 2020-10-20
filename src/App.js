@@ -29,7 +29,11 @@ class App extends React.Component {
     rendition: {},
     lastBookLocation: "epubcfi(/6/2[cover]!/6)",
     defineWord: "",
-    flashCardWord: {}
+    flashCardWord: {},
+    diffX: 0,
+    diffY: 0,
+    dragging: false,
+    defDragStyles: {}
   }
 
   componentDidMount(){
@@ -149,10 +153,11 @@ class App extends React.Component {
         .then(response => response.json())
         .then(userInfoResponse => {
           //if word is not already in list, send request and setState of words and lookUp
-          const index = userInfoResponse.words.length - 1
+          // debugger
+          const newObj = userInfoResponse.words.find(wordObj => wordObj.word === this.state.newWord)
           this.setState(()=>({
             words: userInfoResponse.words,
-            defineWord: userInfoResponse.words[index]
+            defineWord: newObj
           }))
         })
     }
@@ -169,6 +174,45 @@ class App extends React.Component {
       defineWord: ""
     }))
   }
+
+  //methods for dragging the definition modal in the Current Book path
+
+  dragStart = (e) => {
+    const diffX = e.screenX - e.currentTarget.getBoundingClientRect().left
+    const diffY = e.screenY - e.currentTarget.getBoundingClientRect().top
+
+    this.setState(()=>({
+      diffX: diffX,
+      diffY: diffY,
+      dragging: true
+    }))
+    // console.log(e.screenY - e.currentTarget.getBoundingClientRect().top)
+  }
+
+  dragging = (e) => {
+    if(this.state.dragging){
+      const left = e.screenX - this.state.diffX
+      const top = e.screenY - this.state.diffY
+  
+      this.setState(()=>({
+        defDragStyles: {
+          left: left,
+          top: top
+        }
+      }))
+    }
+  }
+
+  dragEnd = () => {
+    //set dragging to false and reset diffX and diffY
+    this.setState(()=>({
+      diffX: 0,
+      diffY: 0,
+      dragging: false
+    }))
+  }
+
+  //End methods for dragging the definition modal in the Current Book path
 
   appRemoveHandler = (word) => {
     console.log("Removing: ", word.word)
@@ -215,7 +259,7 @@ class App extends React.Component {
 
   render(){
 
-    // console.log(this.state)
+    console.log(this.state.diffX, this.state.diffY, this.state.dragging)
 
     return (
       <div className="App">
@@ -240,6 +284,10 @@ class App extends React.Component {
                         lookUpHandler={this.lookUpHandler}
                         lookUp={this.state.defineWord}
                         resetDefTerm={this.resetDefTerm}
+                        dragStart={this.dragStart}
+                        dragging={this.dragging}
+                        dragEnd={this.dragEnd}
+                        defDragStyles={this.state.defDragStyles}
                       />
                     </>
                   )
@@ -281,6 +329,7 @@ class App extends React.Component {
           
           }
         </div>
+        
       </div>
     );
   }

@@ -38,9 +38,9 @@ class CurrentBook extends React.Component{
         this.props.locationChanged(epubcifi)
     }
 
-    tocHandler = (something) => {
-        console.log(something)
-    }
+    // tocHandler = (something) => {
+    //     console.log(something)
+    // }
 
     clickHandler = () => {
         console.log("Looking up:", this.props.selectedWord)
@@ -50,7 +50,14 @@ class CurrentBook extends React.Component{
     }
 
     lookUpModal = () => {
-        return <Definition word={this.props.lookUp} resetDefTerm={this.props.resetDefTerm} />
+        return <Definition 
+                    word={this.props.lookUp} 
+                    resetDefTerm={this.props.resetDefTerm} 
+                    dragStart={this.props.dragStart}
+                    dragging={this.props.dragging}
+                    dragEnd={this.props.dragEnd}
+                    defDragStyles={this.props.defDragStyles}
+                />
     }
 
     render(){

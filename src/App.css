@@ -1,3 +1,7 @@
+body {
+  background-color: #cae4b6;
+}
+
 .main {
   display: flex;
   flex-direction: row;
@@ -5,12 +9,22 @@
   align-content: space-around;
   height: 100vh;
   background-color: #cae4b6;
+  /* background-image: url('./images/2217.jpg');
+  background-size: contain;
+  background-repeat: no-repeat; */
 }
 
 #collection-container {
   height: 100%;
   text-align: center;
   border: 1px black solid;
+  background-image: url('./images/2217.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#collection-container > h1 {
+  visibility: hidden;
 }
 
 .shelf {
@@ -36,6 +50,7 @@
   color: black;
   padding: 5px;
   cursor: pointer;
+  margin-top: 80px;
 }
 
 .book-cover {
@@ -72,6 +87,7 @@
 }
 
 .list {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -81,20 +97,62 @@
   overflow-y: scroll;
 }
 
-.list-word {
-  border: 1px black solid;
-  cursor: pointer;
+.list > h1 {
+  position: fixed;
+  top: 12px;
+  /* background-color: white; */
+  z-index: 1;
+  margin: 0px 0px;
 }
+
+.list-word-home {
+  background-color: white;
+  /* border: 1px solid black; */
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 10px 10px 10px -5px grey;
+}
+
+.list-word {
+  position: relative;
+  /* border: 1px black solid; */
+  cursor: pointer;
+  width: 30vw;
+  height: 20vh;
+  text-align: center;
+  font-size: 24px;
+  box-shadow: -20px 20px 10px grey;
+  margin-bottom: 10px;
+  margin-left: 10vw;
+  background-color: white;
+}
+
+.remove-word{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.remove-word:hover{
+  visibility: visible;
+  cursor: pointer;
+}/* how do I make so when I hover over the word tile, the remove button will be revealed? */
 
 .definition {
   position: absolute;
   right: 0px;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   top: 2%;
   width: 30vw;
   margin: 5vw;
   z-index: 100;
   background: lemonchiffon;
+  text-align: center;
+  box-shadow: 20px 20px 10px grey;
+  opacity: 0.9;
+  cursor: move;
 }
 
 .definition .close-def {
@@ -102,6 +160,7 @@
   top: 2%;
   right: 2%;
   cursor: pointer;
+  border-radius: 50px;
 }
 
 .navbar {
@@ -130,15 +189,19 @@
   font-weight: bold;
 }
 
-.remove-word{
-  display: block;
-  position: relative;
+.navbar > li > h1 {
+  margin: 0px 10px;
+  visibility: hidden;
 }
 
-.remove-word:hover{
-  visibility: visible;
-  cursor: pointer;
-}/* how do I make so when I hover over the word tile, the remove button will be revealed? */
+.navbar > li > h2 {
+  position: absolute;
+  margin: 0px 0px;
+  top: 10px;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 32px;
+}
 
 .flashcards {
   display: contents;
@@ -200,6 +263,7 @@
 
 .card{
   position: absolute;
+  background-color: white;
   top: 50%;
   left: 40%;
   height: 150px;

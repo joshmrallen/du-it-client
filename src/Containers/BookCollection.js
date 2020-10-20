@@ -19,6 +19,7 @@ const BookCollection = ({books, openBook}) => {
             <div className="shelf">
                 {collection()}
             </div>
+            <footer><a class="freepik" href='https://www.freepik.com/vectors/background'>Background vector created by vectorpocket - www.freepik.com</a></footer>
         </div>    
     )
 }
