@@ -2,6 +2,7 @@ import React from 'react'
 import Word from '../Components/Word'
 import WordWithListener from '../Components/WordWithListener'
 import {withRouter} from 'react-router-dom'
+import NoWords from '../Components/NoWords'
 
 const WordList = ({words, history, listDefineHandler, appRemoveHandler}) => {
 
@@ -9,7 +10,7 @@ const WordList = ({words, history, listDefineHandler, appRemoveHandler}) => {
         if(words){
             return words.map((word, index) => <Word key={index} index={index} word={word} appRemoveHandler={appRemoveHandler} />)
         } else {
-            return "没词！快开一本书阅读一下!"
+            return <NoWords />
         }
     }
 
@@ -17,7 +18,7 @@ const WordList = ({words, history, listDefineHandler, appRemoveHandler}) => {
         if(words){
             return words.map((word, index) => <WordWithListener key={index} word={word} listDefineHandler={listDefineHandler} appRemoveHandler={appRemoveHandler} />)
         } else {
-            return "没词！快开一本书阅读一下!"
+            return <NoWords />
         }
     }
 
