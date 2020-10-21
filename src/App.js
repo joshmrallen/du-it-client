@@ -304,14 +304,14 @@ class App extends React.Component {
 
                 <Route path="/flashcards" render={()=>{
                   return(
-                    <div className="flashcards">
+                    <>
                       <FlashCards 
                         wordChooser={this.wordChooser} 
                         cardFront={this.state.cardFront} 
                         flashCardWord={this.state.flashCardWord} 
                         flipToggle={this.flipToggle} 
                       />
-                    </div>
+                    </>
                   )
                 }} />
 

@@ -7,14 +7,14 @@ const FlashCards = ({cardFront, flashCardWord, flipToggle, wordChooser}) => {
     
 
     return(
-        <>
+        <div className="flashcards">
             <Deck wordChooser={wordChooser} />
             <ActiveCard 
                 cardFront={cardFront} 
                 flashCardWord={flashCardWord} 
                 flipToggle={flipToggle} 
             />
-        </>
+        </div>
     )
 
 }

@@ -21,18 +21,18 @@ const WordList = ({words, history, listDefineHandler, appRemoveHandler}) => {
         }
     }
 
-    const listPathStyle = {
-        position: 'fixed',
-        top: '60px',
-        left: '50px'
-    }
+    // const listPathStyle = {
+    //     position: 'fixed',
+    //     top: '60px',
+    //     left: '50px'
+    // }
 
-    const mainPathStyle = {
-        position: 'fixed',
-        top: '12px',
-        'z-index': '1',
-        margin: '0px 0px'
-    }
+    // const mainPathStyle = {
+    //     position: 'fixed',
+    //     top: '12px',
+    //     'z-index': '1',
+    //     margin: '0px 0px'
+    // }
 
     return(
         <div className="list">
