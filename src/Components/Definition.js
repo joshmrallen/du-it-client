@@ -9,7 +9,7 @@ const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragSt
         right: '5%',
         height: '30vh',
         width: '40vw',
-        'font-size': '24px',
+        fontSize: '24px',
     }
 
     return(
