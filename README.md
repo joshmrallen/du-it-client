@@ -2,6 +2,10 @@
 ![gif](./src/images/du-it.gif?raw=true)
 Click [here](https://youtu.be/VHXAkeIC1_0) for full demo.
 
+#### GitHub Repositories:
+- [Front-end](https://github.com/joshmrallen/du-it-client)
+- [Back-end](https://github.com/joshmrallen/du-it-backend)
+
 ## Description
 Du it! Du (读, pinyin: dú) is mandarin Chinese for "read."
 
