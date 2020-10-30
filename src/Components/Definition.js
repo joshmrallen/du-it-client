@@ -1,7 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 
-const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragStyles, history}) => {
+const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragStyles, history, getVoice}) => {
 
     const listStyle = {
         position: 'fixed',
@@ -25,6 +25,8 @@ const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragSt
                 <p>{word.pinyin}</p>
                 <p>{word.definition}</p>
                 <button className="close-def" onClick={resetDefTerm} src="../images/close.png">X</button>
+                <p className="女声" onClick={getVoice}>女</p>
+                <p className="男声">男</p>
             </div> : null}
         </>
         
@@ -53,3 +55,12 @@ export default withRouter(Definition)
 
 
 /* add conditional to sylte attribute that checks the path of history.path */
+
+/* buttons on definition card:
+    1. Add two sound buttons with id male-voice and female-voice respectively
+        * 1 for male, 1 for female
+    2. Style them
+            position: absolute 
+            bottom: 2%
+            right: 2% for male and right: 5% for female so the female button shows up on the left
+*/

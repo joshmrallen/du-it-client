@@ -8,3 +8,5 @@
     - use with src attribute of Audio library in React
     - have onClick for each sound icon
     - use if statement in handler so we use one handler for both icons
+
+- make the request to the api from the front end

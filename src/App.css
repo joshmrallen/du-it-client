@@ -176,6 +176,22 @@ body {
   border-radius: 50px;
 }
 
+.definition .女声 {
+  cursor: pointer;
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+  margin: 0;
+}
+
+.definition .男声 {
+  cursor: pointer;
+  position: absolute;
+  bottom: 2%;
+  left: 5%;
+  margin: 0;
+}
+
 .navbar {
   /* visibility: hidden; */
   display: flex;

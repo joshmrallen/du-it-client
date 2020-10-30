@@ -15,6 +15,9 @@ import Definition from './Components/Definition';
 //react-reader was giving me a message: but then i talked to the author and installed an updated version
 /* Could not find a declaration file for module 'react-reader'. '/Users/Josh/Flatiron/mod-5/project/du-it-client/node_modules/react-reader/lib/index.js' implicitly has an 'any' type. */
 
+//google api key from clicking on the service class for the reader project at the bottom of the page in the google console -- just copy the key (even though it's a json file)
+const APIKEY = ""
+
 const API_URL = "http://localhost:3000"
 
 class App extends React.Component {
@@ -257,6 +260,41 @@ class App extends React.Component {
     }))
   }
 
+  getVoice = (event) => {
+    if(event.target.className === "女声"){
+      //make call to api here
+      fetch('https://texttospeech.googleapis.com/v1beta1/text:synthesize?key='+ APIKEY, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${APIKEY}`,
+          'content-type': 'application/json',
+          accepts: 'application/json'
+        },
+        body: JSON.stringify({
+          input: {
+            text: this.state.defineWord
+          },
+          voice: {
+            languageCode: "cmn-Code",
+            name: "cmn-CN-Standard-A"
+          },
+          audioConfig: {
+            audioEncoding: "MP3"
+          }
+        })
+      })
+        .then(response => response.json())
+        .then(voice => {
+          console.log(voice)
+          console.log("Say the word: ", this.state.defineWord)
+        })
+      //use audio component with the response audio file
+    } else if(event.target.className === "男声"){
+      //make call to api here
+      //use audio component with the response audio file
+    }
+  }
+
   render(){
 
     console.log(this.state.diffX, this.state.diffY, this.state.dragging)
@@ -297,7 +335,7 @@ class App extends React.Component {
                   return(
                     <>
                       <WordList words={this.state.words} listDefineHandler={this.defineHandler} appRemoveHandler={this.appRemoveHandler} />
-                      <Definition word={this.state.defineWord} resetDefTerm={this.resetDefTerm} />
+                      <Definition word={this.state.defineWord} resetDefTerm={this.resetDefTerm} getVoice={this.getVoice} />
                     </>
                   )
                 }} />
