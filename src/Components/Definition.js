@@ -12,6 +12,14 @@ const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragSt
         fontSize: '24px',
     }
 
+    const clickHandler = (event) => {
+        if(event.target.className === "女声"){
+            getVoice(word.id, 'female')
+        } else if(event.target.className === "男声"){
+            getVoice(word.id, 'male')
+        }
+    }
+
     return(
         <>
         {word !== "" ? 
@@ -25,8 +33,8 @@ const Definition = ({word, resetDefTerm, dragStart, dragging, dragEnd, defDragSt
                 <p>{word.pinyin}</p>
                 <p>{word.definition}</p>
                 <button className="close-def" onClick={resetDefTerm} src="../images/close.png">X</button>
-                <p className="女声" onClick={getVoice}>女</p>
-                <p className="男声">男</p>
+                <p className="女声" onClick={clickHandler}>女</p>
+                <p className="男声" onClick={clickHandler}>男</p>
             </div> : null}
         </>
         

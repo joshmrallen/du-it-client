@@ -57,6 +57,7 @@ class CurrentBook extends React.Component{
                     dragging={this.props.dragging}
                     dragEnd={this.props.dragEnd}
                     defDragStyles={this.props.defDragStyles}
+                    getVoice={this.props.getVoice}
                 />
     }
 
